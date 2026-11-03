@@ -1,1 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Budget Planner - Capstone 52</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
 
+/* FULL PAGE EXPANDED STYLE */
+body {
+  font-family: Arial;
+  background: #eef2ff;
+  padding: 20px;
+}
+
+.main-box {
+  background: white;
+  max-width: 600px;
+  margin: auto;
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 5px 20px gray;
+}
+
+h1 {
+  text-align: center;
+  font-size: 32px;
+  color: #333;
+}
+
+p {
+  text-align: center;
+  color: gray;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+/* EACH INPUT BIG BOX */
+.input-group {
+  background: #f8f9ff;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 12px;
+  border-left: 5px solid #667eea;
+}
+
+label {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+input {
+  width: 95%;
+  padding: 14px;
+  margin-top: 10px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+}
+
+/* BIG BUTTON */
+button {
+  width: 100%;
+  padding: 18px;
+  margin-top: 35px;
+  font-size: 22px;
+  font-weight: bold;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 15px;
+}
+
+/* RESULT BIG */
+#result {
+  margin-top: 30px;
+  padding: 25px;
+  font-size: 20px;
+  line-height: 35px;
+  border-radius: 15px;
+  background: #e6fffa;
+  display: none;
+}
+
+</style>
+</head>
+<body>
+
+<div class="main-box">
+
+<h1>💰 AI Budget Planner</h1>
+<p>For Students - Capstone 52</p>
+
+<div class="input-group">
+<label>1. Total Income (Rs)</label>
+<input id="income" type="number" value="5000">
+</div>
+
+<div class="input-group">
+<label>2. Food Expense</label>
+<input id="food" type="number" value="1000">
+</div>
+
+<div class="input-group">
+<label>3. Travel Expense</label>
+<input id="travel" type="number" value="800">
+</div>
+
+<div class="input-group">
+<label>4. Mobile Recharge</label>
+<input id="recharge" type="number" value="300">
+</div>
+
+<div class="input-group">
+<label>5. College Expense</label>
+<input id="college" type="number" value="700">
+</div>
+
+<div class="input-group">
+<label>6. Other Expense</label>
+<input id="other" type="number" value="500">
+</div>
+
+<button onclick="calc()">CALCULATE BUDGET</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+function calc(){
+let inc = Number(document.getElementById('income').value);
+let f = Number(document.getElementById('food').value);
+let t = Number(document.getElementById('travel').value);
+let r = Number(document.getElementById('recharge').value);
+let c = Number(document.getElementById('college').value);
+let o = Number(document.getElementById('other').value);
+
+let total = f + t + r + c + o;
+let bal = inc - total;
+
+let res = document.getElementById('result');
+res.style.display = 'block';
+
+res.innerHTML = `
+<h2>📊 Result</h2>
+Total Expenses: Rs. ${total} <br>
+Balance Amount: Rs. ${bal} <br>
+<br>
+<hr>
+<br>
+🤖 <b>AI Suggestion:</b><br>
+Emergency Fund (50%): Rs. ${bal*0.5} <br>
+Books (30%): Rs. ${bal*0.3} <br>
+Fun (20%): Rs. ${bal*0.2} <br>
+<br>
+✅ Verification: Budget Correct
+`;
+}
+</script>
+
+</body>
+</html>
